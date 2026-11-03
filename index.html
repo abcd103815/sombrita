@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="সম্বৃত-এর জন্য নিজের পরিচয়পত্র তৈরি করুন এবং HD PNG ছবি হিসেবে সংরক্ষণ করুন।"
+    />
+    <title>সম্বৃত | পরিচয়পত্র তৈরি করুন</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="সম্বৃত হোম">
+          <span class="brand-mark">
+            <img src="Sambrita_Logo_Transparent.png" alt="" />
+          </span>
+          <span class="brand-name">সম্বৃত</span>
+        </a>
+        <span class="topbar-note"><span class="status-dot"></span> পরিচয়পত্র নির্মাতা</span>
+      </header>
+
+      <section class="workspace" aria-labelledby="page-title">
+        <div class="intro">
+          <span class="eyebrow"><span class="eyebrow-line"></span> আমাদের পরিচয়, আমাদের গর্ব</span>
+          <h1 id="page-title">আপনার পরিচয়পত্র<br /><span>তৈরি করুন</span></h1>
+          <p>তথ্যগুলো পূরণ করুন, পাশে কার্ডটি দেখুন, তারপর HD ছবিটি সংরক্ষণ করুন।</p>
+        </div>
+
+        <div class="builder">
+          <form class="details-panel" id="card-form">
+            <div class="panel-heading">
+              <div>
+                <span class="section-kicker">ধাপ ১</span>
+                <h2>আপনার তথ্য</h2>
+              </div>
+              <span class="required-note"><span aria-hidden="true">*</span> আবশ্যক</span>
+            </div>
+
+            <label class="field-label" for="full-name">নাম <span>*</span></label>
+            <input
+              class="text-input"
+              id="full-name"
+              name="name"
+              type="text"
+              placeholder="আপনার পূর্ণ নাম লিখুন"
+              autocomplete="name"
+              maxlength="60"
+              required
+            />
+
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label" for="blood-group">রক্তের গ্রুপ <span>*</span></label>
+                <select class="text-input select-input" id="blood-group" name="blood" required>
+                  <option value="" disabled selected>নির্বাচন করুন</option>
+                  <option>A+</option>
+                  <option>A−</option>
+                  <option>B+</option>
+                  <option>B−</option>
+                  <option>AB+</option>
+                  <option>AB−</option>
+                  <option>O+</option>
+                  <option>O−</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="designation">পদবি <span>*</span></label>
+                <input
+                  class="text-input"
+                  id="designation"
+                  name="designation"
+                  type="text"
+                  placeholder="আপনার পদবি"
+                  maxlength="45"
+                  required
+                />
+              </div>
+            </div>
+
+            <span class="field-label" id="committee-label">কমিটির মেয়াদ <span>*</span></span>
+            <div class="year-range" role="group" aria-labelledby="committee-label">
+              <label class="year-field">
+                <span>শুরুর বছর</span>
+                <select class="text-input select-input" id="committee-start" name="committeeStart" required></select>
+              </label>
+              <span class="year-range-separator" aria-hidden="true">—</span>
+              <label class="year-field">
+                <span>শেষের বছর</span>
+                <select class="text-input select-input" id="committee-end" name="committeeEnd" required></select>
+              </label>
+            </div>
+
+            <span class="field-label photo-label">ব্যক্তিগত ছবি <span>*</span></span>
+            <label class="upload-box" id="upload-box" for="photo-input">
+              <span class="upload-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14.5v3A2.5 2.5 0 0 0 7.5 20h9a2.5 2.5 0 0 0 2.5-2.5v-3" />
+                </svg>
+              </span>
+              <span class="upload-copy">
+                <strong id="upload-title">ছবি বেছে নিন <span>অথবা এখানে ছাড়ুন</span></strong>
+                <small id="upload-hint">JPG, PNG, WebP · সর্বোচ্চ ১৫ MB · HD ছবির জন্য ৬০০ × ৭৫০ px বা বেশি</small>
+              </span>
+              <input id="photo-input" name="photo" type="file" accept="image/jpeg,image/png,image/webp" required />
+            </label>
+            <p class="form-error" id="form-error" role="alert" aria-live="polite"></p>
+          </form>
+
+          <section class="preview-panel" aria-labelledby="preview-title">
+            <div class="preview-heading">
+              <div>
+                <span class="section-kicker">ধাপ ২</span>
+                <h2 id="preview-title">কার্ডের প্রিভিউ</h2>
+              </div>
+              <span class="live-badge"><span></span> LIVE</span>
+            </div>
+
+            <div class="card-stage">
+              <article class="id-card" id="id-card" aria-label="সম্বৃত পরিচয়পত্রের প্রিভিউ">
+                <div class="card-top-rule"></div>
+                <div class="card-brand">
+                  <img class="card-logo" src="Sambrita_Logo_Transparent.png" alt="সম্বৃত লোগো" />
+                  <div class="card-org">
+                    <h3>সম্বৃত</h3>
+                    <span class="card-motto">এক বৃত্তে • এক মননে</span>
+                  </div>
+                </div>
+                <div class="card-main">
+                  <div class="portrait-frame">
+                    <img id="photo-preview" alt="আপনার নির্বাচিত ছবি" />
+                    <div class="portrait-placeholder" id="portrait-placeholder">
+                      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                        <circle cx="24" cy="17" r="8" />
+                        <path d="M9 41c.8-8.3 6.9-13 15-13s14.2 4.7 15 13" />
+                      </svg>
+                      <span>আপনার ছবি</span>
+                    </div>
+                  </div>
+                  <div class="card-info">
+                    <h4 id="preview-name">আপনার নাম</h4>
+                    <span class="member-tag">সদস্য পরিচয়পত্র</span>
+                    <div class="info-grid">
+                      <div class="info-item blood-item">
+                        <span class="info-label">রক্তের গ্রুপ</span>
+                        <strong id="preview-blood">—</strong>
+                      </div>
+                      <div class="info-item">
+                        <span class="info-label">পদবি</span>
+                        <strong id="preview-designation">আপনার পদবি</strong>
+                      </div>
+                      <div class="info-item committee-item">
+                        <span class="info-label">কমিটি</span>
+                        <strong id="preview-committee">কমিটির নাম</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="preview-footer">
+              <span class="size-note"><span class="size-icon">▱</span> স্ট্যান্ডার্ড কার্ড সাইজ · ৮৫.৬ × ৫৪ মিমি</span>
+              <a class="download-button is-disabled" id="download-button" href="#" aria-disabled="true" tabindex="-1" target="_blank" rel="noopener">
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M10 3v9m0 0 3.5-3.5M10 12 6.5 8.5M4 13v3.5h12V13" />
+                </svg>
+                HD ছবি ডাউনলোড
+                <span class="button-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+            <p class="print-note">
+              ডাউনলোড না হলে <a id="image-preview-link" class="is-disabled" href="#" aria-disabled="true" tabindex="-1" target="_blank" rel="noopener">ছবিটি খুলুন</a>
+              এবং “Save image as” নির্বাচন করুন।
+            </p>
+          </section>
+        </div>
+
+        <footer class="page-footer">
+          <span>© সম্বৃত</span>
+          <span class="footer-separator"></span>
+          <span>আপনার পরিচয়, আপনার গর্ব</span>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>
