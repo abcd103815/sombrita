@@ -1,0 +1,758 @@
+:root {
+  color-scheme: light;
+  --wine: #741d2d;
+  --wine-dark: #4b1721;
+  --wine-soft: #f7edef;
+  --gold: #c89b48;
+  --ink: #302629;
+  --muted: #8d8283;
+  --line: #eee8e5;
+  --paper: #fffdfa;
+  font-family: "Hind Siliguri", "Noto Sans Bengali", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 86% 34%, rgba(233, 213, 192, 0.28), transparent 30%),
+    #faf8f5;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1120px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+.topbar {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(93, 59, 57, 0.1);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--wine-dark);
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(116, 29, 45, 0.15);
+  border-radius: 50%;
+  background: #fff;
+}
+
+.brand-mark img {
+  width: 31px;
+  height: 31px;
+  object-fit: cover;
+}
+
+.brand-name {
+  font-family: "Noto Serif Bengali", "Hind Siliguri", serif;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.topbar-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #776d6a;
+  font-size: 13px;
+}
+
+.status-dot,
+.live-badge span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #6a9c70;
+  box-shadow: 0 0 0 3px rgba(106, 156, 112, 0.13);
+}
+
+.workspace {
+  padding: 46px 0 25px;
+}
+
+.intro {
+  margin-bottom: 31px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--wine);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.eyebrow-line {
+  width: 22px;
+  height: 1px;
+  background: var(--gold);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+.intro h1 {
+  margin-top: 8px;
+  font-family: "Noto Serif Bengali", "Hind Siliguri", serif;
+  font-size: clamp(29px, 3.4vw, 39px);
+  font-weight: 700;
+  line-height: 1.34;
+  letter-spacing: -0.5px;
+}
+
+.intro h1 span {
+  color: var(--wine);
+}
+
+.intro > p {
+  margin-top: 7px;
+  color: #817779;
+  font-size: 14px;
+}
+
+.builder {
+  display: grid;
+  grid-template-columns: minmax(0, 0.91fr) minmax(0, 1.09fr);
+  overflow: hidden;
+  border: 1px solid #eee9e5;
+  border-radius: 12px;
+  background: var(--paper);
+  box-shadow: 0 16px 55px rgba(69, 43, 35, 0.065);
+}
+
+.details-panel,
+.preview-panel {
+  min-width: 0;
+  padding: 27px 30px 24px;
+}
+
+.details-panel {
+  border-right: 1px solid var(--line);
+}
+
+.panel-heading,
+.preview-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.section-kicker {
+  display: block;
+  margin-bottom: 1px;
+  color: #ad968e;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.panel-heading h2,
+.preview-heading h2 {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.required-note {
+  color: #9c9090;
+  font-size: 11px;
+}
+
+.required-note span,
+.field-label > span {
+  color: #b94a50;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 6px;
+  color: #514549;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.text-input {
+  width: 100%;
+  height: 43px;
+  padding: 0 12px;
+  border: 1px solid #e8e1de;
+  border-radius: 6px;
+  outline: 0;
+  background: #fff;
+  color: var(--ink);
+  font-size: 13px;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.text-input::placeholder {
+  color: #b6acad;
+}
+
+.text-input:focus {
+  border-color: #b76d72;
+  box-shadow: 0 0 0 3px rgba(116, 29, 45, 0.08);
+}
+
+.select-input {
+  color: #574b4e;
+  cursor: pointer;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+  margin-top: 14px;
+}
+
+.field-group {
+  min-width: 0;
+}
+
+.field-group .text-input {
+  margin-bottom: 14px;
+}
+
+.year-range {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end;
+  gap: 9px;
+  margin-bottom: 16px;
+}
+
+.year-field {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+  color: #8d8283;
+  font-size: 10px;
+}
+
+.year-range-separator {
+  padding-bottom: 10px;
+  color: #a98555;
+  font-size: 16px;
+}
+
+.photo-label {
+  margin-bottom: 7px;
+}
+
+.upload-box {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 13px;
+  border: 1px dashed #d9c9c4;
+  border-radius: 7px;
+  background: #fffdfb;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.upload-box:hover,
+.upload-box.is-dragging {
+  border-color: var(--wine);
+  background: #fcf6f5;
+}
+
+.upload-icon {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: var(--wine-soft);
+  color: var(--wine);
+}
+
+.upload-icon svg {
+  width: 19px;
+  height: 19px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.upload-copy {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.upload-copy strong {
+  overflow: hidden;
+  color: #55474b;
+  font-size: 12px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.upload-copy strong span {
+  color: var(--wine);
+  font-weight: 500;
+}
+
+.upload-copy small {
+  color: #a29797;
+  font-size: 10px;
+}
+
+#photo-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+#photo-input:focus-visible + .upload-copy {
+  outline: 2px solid var(--wine);
+}
+
+.form-error {
+  min-height: 16px;
+  margin-top: 4px;
+  color: #a32d39;
+  font-size: 11px;
+}
+
+.preview-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-heading {
+  margin-bottom: 13px;
+}
+
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 8px;
+  border: 1px solid #e8eee8;
+  border-radius: 20px;
+  color: #667c68;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+.live-badge span {
+  width: 6px;
+  height: 6px;
+}
+
+.card-stage {
+  min-height: 258px;
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 23px 10px;
+  border: 1px solid #eee9e7;
+  border-radius: 8px;
+  background:
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.9), transparent 70%),
+    #f6f3ef;
+}
+
+.id-card {
+  position: relative;
+  width: 340px;
+  height: 215px;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 10px 17px 9px;
+  border: 1px solid rgba(113, 51, 46, 0.16);
+  border-radius: 10px;
+  background:
+    radial-gradient(ellipse at 91% 76%, rgba(205, 166, 100, 0.12), transparent 34%),
+    linear-gradient(145deg, #fffefa 8%, #fffaf3 100%);
+  box-shadow: 0 9px 23px rgba(67, 45, 36, 0.13);
+}
+
+.card-top-rule {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--wine), #a94442 65%, var(--gold));
+}
+
+.card-brand {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.card-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.card-org h3 {
+  color: var(--wine);
+  font-family: "Noto Serif Bengali", "Hind Siliguri", serif;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.card-motto {
+  display: block;
+  margin-top: 2px;
+  color: #61202b;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.card-main {
+  height: 132px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 0 3px;
+}
+
+.portrait-frame {
+  position: relative;
+  width: 85px;
+  height: 105px;
+  flex: 0 0 85px;
+  overflow: hidden;
+  border: 2px solid white;
+  border-radius: 6px;
+  background: linear-gradient(150deg, #f1e4dc, #e8d5ca);
+  box-shadow: 0 0 0 1px #e1d3c9, 0 3px 8px rgba(73, 42, 33, 0.12);
+}
+
+.portrait-frame > img {
+  width: 100%;
+  height: 100%;
+  display: none;
+  object-fit: cover;
+  object-position: center;
+}
+
+.portrait-frame > img.is-visible {
+  display: block;
+}
+
+.portrait-placeholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: #a08076;
+}
+
+.portrait-placeholder svg {
+  width: 31px;
+  height: 31px;
+  stroke: #b08d82;
+  stroke-width: 1.35;
+}
+
+.portrait-placeholder span {
+  font-size: 8px;
+}
+
+.portrait-placeholder.is-hidden {
+  display: none;
+}
+
+.card-info {
+  min-width: 0;
+  flex: 1;
+  align-self: stretch;
+  padding-top: 3px;
+}
+
+.card-info h4 {
+  overflow: hidden;
+  color: #48232b;
+  font-family: "Noto Serif Bengali", "Hind Siliguri", serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.member-tag {
+  display: inline-block;
+  margin-top: 1px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: #f4e9e6;
+  color: var(--wine);
+  font-size: 8px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 6px 8px;
+  margin-top: 9px;
+}
+
+.info-item {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.info-label {
+  color: #9a8880;
+  font-size: 8px;
+  line-height: 1.35;
+}
+
+.info-item strong {
+  overflow: hidden;
+  color: #4c3a3b;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.blood-item strong {
+  color: #a93240;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.preview-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.size-note {
+  color: #918584;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.size-icon {
+  margin-right: 3px;
+  color: #a98555;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  vertical-align: -1px;
+}
+
+.download-button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--wine);
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(116, 29, 45, 0.16);
+  transition: background 150ms ease, transform 150ms ease;
+  text-decoration: none;
+}
+
+.download-button:hover:not(.is-disabled) {
+  transform: translateY(-1px);
+  background: #5d1725;
+}
+
+.download-button.is-disabled {
+  background: #a89598;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.download-button:focus-visible {
+  outline: 3px solid rgba(116, 29, 45, 0.25);
+  outline-offset: 3px;
+}
+
+.download-button svg {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.button-arrow {
+  margin-left: 2px;
+  color: #e9c988;
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.print-note {
+  margin-top: 7px;
+  color: #a09594;
+  font-size: 10px;
+  text-align: right;
+}
+
+.print-note a {
+  color: var(--wine);
+  font-weight: 600;
+}
+
+.print-note a.is-disabled {
+  color: #a09594;
+  pointer-events: none;
+}
+
+.page-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 20px 0 0;
+  color: #9b9090;
+  font-size: 11px;
+}
+
+.footer-separator {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #c3a782;
+}
+
+@media (max-width: 780px) {
+  .app-shell {
+    width: min(620px, calc(100% - 36px));
+  }
+
+  .workspace {
+    padding-top: 34px;
+  }
+
+  .builder {
+    grid-template-columns: 1fr;
+  }
+
+  .details-panel {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .preview-panel {
+    min-height: 410px;
+  }
+}
+
+@media (max-width: 430px) {
+  .app-shell {
+    width: calc(100% - 28px);
+  }
+
+  .topbar {
+    height: 64px;
+  }
+
+  .workspace {
+    padding-top: 27px;
+  }
+
+  .details-panel,
+  .preview-panel {
+    padding: 22px 18px;
+  }
+
+  .field-row {
+    gap: 9px;
+  }
+
+  .card-stage {
+    min-height: 220px;
+    padding: 16px 7px;
+  }
+
+  .id-card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 340 / 215;
+    padding-right: 13px;
+    padding-left: 13px;
+  }
+
+  .preview-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .size-note {
+    white-space: normal;
+  }
+
+  .download-button {
+    width: 100%;
+  }
+}
