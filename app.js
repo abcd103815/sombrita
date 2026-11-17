@@ -25,7 +25,7 @@ let exportTimer;
 let exportVersion = 0;
 let imageUrl;
 let activeSide = "front";
-const contactNumber = "০১৬৭৯০০০১২৫৪";
+const contactNumber = "০১৬৭৯০০১২৫৪";
 
 backPhone.textContent = contactNumber;
 
