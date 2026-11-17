@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="theme.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -26,7 +27,11 @@
           </span>
           <span class="brand-name">সম্বৃত</span>
         </a>
-        <span class="topbar-note"><span class="status-dot"></span> পরিচয়পত্র নির্মাতা</span>
+        <nav class="topbar-nav" aria-label="প্রধান নেভিগেশন">
+          <a class="topbar-link" href="committee.html">কমিটি তালিকা</a>
+          <span class="topbar-note"><span class="status-dot"></span> পরিচয়পত্র নির্মাতা</span>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="ডার্ক মোড চালু করুন">ডার্ক মোড</button>
+        </nav>
       </header>
 
       <section class="workspace" aria-labelledby="page-title">
@@ -74,18 +79,67 @@
                 </select>
               </div>
               <div class="field-group">
-                <label class="field-label" for="designation">পদবি <span>*</span></label>
-                <input
-                  class="text-input"
-                  id="designation"
-                  name="designation"
-                  type="text"
-                  placeholder="আপনার পদবি"
-                  maxlength="45"
-                  required
-                />
+                <label class="field-label" for="designation">কমিটির পদবি <span>*</span></label>
+                <select class="text-input select-input" id="designation" name="designation" required>
+                  <option value="" disabled selected>পদবি নির্বাচন করুন</option>
+                  <option>সভাপতি</option>
+                  <option>সিনিয়র সহ-সভাপতি</option>
+                  <option>সহ-সভাপতি</option>
+                  <option>সাধারণ সম্পাদক</option>
+                  <option>সহ-সাধারণ সম্পাদক</option>
+                  <option>অর্থ সম্পাদক</option>
+                  <option>সহ-অর্থ সম্পাদক</option>
+                  <option>সাংগঠনিক সম্পাদক</option>
+                  <option>সহ-সাংগঠনিক সম্পাদক</option>
+                  <option>দপ্তর সম্পাদক</option>
+                  <option>সহ-দপ্তর সম্পাদক</option>
+                  <option>প্রচার ও প্রকাশনা সম্পাদক</option>
+                  <option>সহ-প্রচার সম্পাদক</option>
+                  <option>সাংস্কৃতিক সম্পাদক</option>
+                  <option>সহ-সাংস্কৃতিক সম্পাদক</option>
+                  <option>শিক্ষা বিষয়ক সম্পাদক</option>
+                  <option>সহ-শিক্ষা বিষয়ক সম্পাদক</option>
+                  <option>তথ্যপ্রযুক্তি বিষয়ক সম্পাদক</option>
+                  <option>সহ-তথ্য সম্পাদক</option>
+                  <option>ধর্ম বিষয়ক সম্পাদক</option>
+                  <option>সহ-ধর্ম বিষয়ক সম্পাদক</option>
+                  <option>ক্রীড়া বিষয়ক সম্পাদক</option>
+                  <option>সহ-ক্রীড়া সম্পাদক</option>
+                  <option>যুব বিষয়ক সম্পাদক</option>
+                  <option>সহ-যুব বিষয়ক সম্পাদক</option>
+                  <option>সমাজকল্যাণ সম্পাদক</option>
+                  <option>সহ-সমাজকল্যাণ সম্পাদক</option>
+                  <option>দুর্যোগ ও ত্রাণ বিষয়ক সম্পাদক</option>
+                  <option>সহ-দুর্যোগ ও ত্রাণ বিষয়ক সম্পাদক</option>
+                  <option>সদস্য সচিব</option>
+                  <option>সহ-সদস্য সচিব</option>
+                  <option>প্রবাসীকল্যাণ বিষয়ক সম্পাদক</option>
+                  <option>মহিলা সম্পাদিকা</option>
+                  <option>সহ-মহিলা সম্পাদিকা</option>
+                  <option>কার্যকরী সদস্য</option>
+                </select>
               </div>
             </div>
+
+            <label class="field-label" for="phone-number">ফোন নম্বর <span>*</span></label>
+            <input
+              class="text-input"
+              id="phone-number"
+              name="phone"
+              type="tel"
+              placeholder="আপনার ফোন নম্বর লিখুন"
+              autocomplete="tel"
+              inputmode="numeric"
+              minlength="11"
+              maxlength="11"
+              pattern="[0-9০-৯]{11}"
+              title="ফোন নম্বরটি ঠিক ১১টি অঙ্কে লিখুন।"
+              aria-describedby="phone-number-hint"
+              required
+            />
+            <small class="field-help" id="phone-number-hint">
+              ফোন নম্বর অবশ্যই ১১ অঙ্কের হতে হবে।
+            </small>
 
             <span class="field-label" id="committee-label">কমিটির মেয়াদ <span>*</span></span>
             <div class="year-range" role="group" aria-labelledby="committee-label">
@@ -122,12 +176,19 @@
                 <span class="section-kicker">ধাপ ২</span>
                 <h2 id="preview-title">কার্ডের প্রিভিউ</h2>
               </div>
+            </div>
+
+            <div class="preview-controls">
+              <div class="card-side-switch" role="group" aria-label="কার্ডের দিক নির্বাচন">
+                <button class="card-side-button is-active" type="button" data-card-side="front" aria-pressed="true">সামনের অংশ</button>
+                <button class="card-side-button" type="button" data-card-side="back" aria-pressed="false">পেছনের অংশ</button>
+              </div>
               <span class="live-badge"><span></span> LIVE</span>
             </div>
 
             <div class="card-stage">
               <article class="id-card" id="id-card" aria-label="সম্বৃত পরিচয়পত্রের প্রিভিউ">
-                <div class="card-top-rule"></div>
+                <img class="card-decoration" src="card-decoration.svg" alt="" aria-hidden="true" />
                 <div class="card-brand">
                   <img class="card-logo" src="Sambrita_Logo_Transparent.png" alt="সম্বৃত লোগো" />
                   <div class="card-org">
@@ -135,6 +196,7 @@
                     <span class="card-motto">এক বৃত্তে • এক মননে</span>
                   </div>
                 </div>
+                <span class="card-member-title">সদস্য পরিচয়পত্র</span>
                 <div class="card-main">
                   <div class="portrait-frame">
                     <img id="photo-preview" alt="আপনার নির্বাচিত ছবি" />
@@ -147,22 +209,62 @@
                     </div>
                   </div>
                   <div class="card-info">
-                    <h4 id="preview-name">আপনার নাম</h4>
-                    <span class="member-tag">সদস্য পরিচয়পত্র</span>
                     <div class="info-grid">
-                      <div class="info-item blood-item">
-                        <span class="info-label">রক্তের গ্রুপ</span>
-                        <strong id="preview-blood">—</strong>
+                      <div class="info-item name-item">
+                        <span class="info-label">নাম</span>
+                        <strong id="preview-name">আপনার নাম</strong>
                       </div>
                       <div class="info-item">
                         <span class="info-label">পদবি</span>
                         <strong id="preview-designation">আপনার পদবি</strong>
                       </div>
+                      <div class="info-item">
+                        <span class="info-label">ফোন নম্বর</span>
+                        <strong id="preview-phone">—</strong>
+                      </div>
+                      <div class="info-item blood-item">
+                        <span class="info-label">রক্তের গ্রুপ</span>
+                        <strong id="preview-blood">—</strong>
+                      </div>
                       <div class="info-item committee-item">
-                        <span class="info-label">কমিটি</span>
+                        <span class="info-label">কমিটির মেয়াদ</span>
                         <strong id="preview-committee">কমিটির নাম</strong>
                       </div>
                     </div>
+                  </div>
+                </div>
+                <span class="card-footer-tagline">সেবায় • সম্প্রীতিতে • সমৃদ্ধিতে</span>
+              </article>
+              <article class="id-card id-card--back" id="back-card" aria-label="সম্বৃত পরিচয়পত্রের পেছনের অংশ" hidden>
+                <img class="card-back-decoration" src="card-back-decoration.svg" alt="" aria-hidden="true" />
+                <div class="back-brand">
+                  <strong>সম্বৃত</strong>
+                  <span class="back-brand-divider" aria-hidden="true"></span>
+                  <span class="back-brand-motto">এক বৃত্তে • এক মননে</span>
+                </div>
+                <div class="back-details">
+                  <div class="back-detail">
+                    <span class="back-detail-icon" aria-hidden="true">▦</span>
+                    <span>প্রতিষ্ঠাকাল : <strong>২০২৬</strong></span>
+                  </div>
+                  <div class="back-detail">
+                    <span class="back-detail-icon back-phone-icon" aria-hidden="true">☎</span>
+                    <span>যোগাযোগ : <strong id="back-phone">০১৬৭৯০০০১২৫৪</strong></span>
+                  </div>
+                </div>
+                <div class="back-notice" lang="bn">
+                  <span>◆ এই পরিচয়পত্র সম্বৃত-এর সম্পত্তি।</span>
+                  <span>◆ অননুমোদিতভাবে ব্যবহার করা যাবে না।</span>
+                  <span>◆ হারিয়ে গেলে প্রদত্ত নম্বরে যোগাযোগ করুন।</span>
+                </div>
+                <div class="back-signatures">
+                  <div class="back-signature">
+                    <img id="president-signature" src="signature-president.png" alt="সভাপতির স্বাক্ষর" />
+                    <span>সভাপতি</span>
+                  </div>
+                  <div class="back-signature">
+                    <img id="secretary-signature" src="signature-secretary.png" alt="সাধারণ সম্পাদকের স্বাক্ষর" />
+                    <span>সাধারণ সম্পাদক</span>
                   </div>
                 </div>
               </article>
@@ -174,7 +276,7 @@
                 <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
                   <path d="M10 3v9m0 0 3.5-3.5M10 12 6.5 8.5M4 13v3.5h12V13" />
                 </svg>
-                HD ছবি ডাউনলোড
+                <span id="download-label">HD সামনের অংশ ডাউনলোড</span>
                 <span class="button-arrow" aria-hidden="true">→</span>
               </a>
             </div>
